@@ -17,18 +17,18 @@ var timer = {
 	msecs: 0,
 	round:0,
 	getTimerString:function(){
-		var myHours, myMins,mySecs,myMsecs;
-		(timer.hours < 10) ? (myHours = '0'+ timer.hours):(myHours = timer.hours);
-		(timer.mins < 10) ? (myMins = '0' + timer.mins):(myMins = timer.mins);
-		(timer.secs < 10) ? (mySecs = '0' + timer.secs):(mySecs = timer.secs);
-		(timer.msecs < 10) ? (myMsecs = '0' + timer.msecs):(myMsecs = timer.msecs);
+		var myHours, myMins, mySecs, myMsecs;
+		(myHours = (timer.hours < 10) ? ('0' + timer.hours):timer.hours);
+        	(myMins = (timer.mins < 10) ? ('0' + timer.mins):timer.mins);
+        	(mySecs = (timer.secs < 10) ? ('0' + timer.secs):timer.secs);
+        	(myMsecs = (timer.msecs < 10) ? ('0' + timer.msecs):timer.msecs);
 		return (myHours + ':'+ myMins + ':' + mySecs + ':' + myMsecs + '0');
 	},
 	run: function(){
 			timer.msecs++;
-			if (timer.msecs >= 100) {timer.secs++; timer.msecs = 0};
-			if (timer.secs >= 60) {timer.mins++; timer.secs = 0};
-			if (timer.mins >= 60) {timer.hours++; timer.mins = 0};
+			if (timer.msecs >= 100) {timer.secs++; timer.msecs = '0'};
+			if (timer.secs >= 60) {timer.mins++; timer.secs = '0'};
+			if (timer.mins >= 60) {timer.hours++; timer.mins = '0'};
 			timer.renderTimer();
 		},
 	
